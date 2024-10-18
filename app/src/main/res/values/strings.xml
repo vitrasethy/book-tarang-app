@@ -54,6 +54,12 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="hello">Hello,</string>
+    <string name="sodara">Sodora</string>
+    <string name="football">Football</string>
+    <string name="volleyball">Volleyball</string>
+    <string name="pingpong">Ping Pong</string>
+    <string name="basketball">Basketball</string>
     <!--    <string name="app_name">Tarang-App</string>-->
     <string name="tarang">Tarang</string>
     <string name="welcome_to">Welcome to</string>
