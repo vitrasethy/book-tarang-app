@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    tools:context=".ui.login.LoginFragment">
+    tools:context="com.example.booktarang.fragments.LoginFragment">
 
     <ImageView
         android:id="@+id/logo"
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tarang"
-        android:textColor="#9A85F1"
+        android:textColor="#9575CD"
         android:textSize="54sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/welcome"
@@ -62,6 +62,7 @@
         android:hint="@string/phone_number"
         android:inputType="phone"
         android:padding="16dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tarang" />
@@ -77,6 +78,7 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="16dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
         app:layout_constraintStart_toStartOf="@+id/editTextPhone"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
@@ -108,11 +110,12 @@
     <Button
         android:id="@+id/signin_btn"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="48dp"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="10dp"
         android:background="@color/background"
         android:text="@string/signin"
+        android:textColor="#D81B60"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/already_acc" />
