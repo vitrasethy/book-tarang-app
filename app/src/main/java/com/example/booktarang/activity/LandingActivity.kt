@@ -26,8 +26,9 @@ class LandingActivity: AppCompatActivity() {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        activityFragment = profileFragment
-        fragmentTransaction.add(binding.lytFragment.id, homeFragment).hide(homeFragment)
+        activityFragment = homeFragment
+        fragmentTransaction.add(binding.lytFragment.id, homeFragment)
+        fragmentTransaction.add(binding.lytFragment.id, profileFragment).hide(profileFragment)
 
         fragmentTransaction.commit()
 
