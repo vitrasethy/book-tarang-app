@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnuHome"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+<!--    <item-->
+<!--        android:id="@+id/mnuProvinces"-->
+<!--        android:icon="@drawable/ic_provinces"-->
+<!--        android:title="@string/provinces" />-->
+<!--    <item-->
+<!--        android:id="@+id/mnuSearch"-->
+<!--        android:icon="@drawable/ic_search"-->
+<!--        android:title="@string/search" />-->
+    <item
+        android:id="@+id/mnuAccount"
+        android:checked="true"
+        android:icon="@drawable/ic_account"
+        android:title="@string/account" />
+    <item
+        android:id="@+id/mnuMore"
+        android:icon="@drawable/ic_more"
+        android:title="@string/more" />
+</menu>
