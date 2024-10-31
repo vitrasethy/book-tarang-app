@@ -5,18 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.booktarang.databinding.FragmentHomeBinding
+import androidx.fragment.app.viewModels
 import com.example.booktarang.databinding.FragmentProfileBinding
+import com.example.booktarang.viewmodel.ProfileViewModel
 
-class HomeFragment: Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+class ProfileFragment: Fragment() {
+    private val viewModel by viewModels<ProfileViewModel>()
+
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root;
     }
 }

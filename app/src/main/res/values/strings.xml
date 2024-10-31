@@ -56,14 +56,12 @@
 
     <string name="hello">Hello,</string>
     <string name="sodara">Sodora</string>
-    <string name="football">Football</string>
     <string name="volleyball">Volleyball</string>
     <string name="pingpong">Ping Pong</string>
     <string name="basketball">Basketball</string>
     <!--    <string name="app_name">Tarang-App</string>-->
     <string name="tarang">Tarang</string>
     <string name="welcome_to">Welcome to</string>
-    <string name="hello">Hello,</string>
     <string name="name">Chhay</string>
     <string name="fullname">Chengchhay Sun</string>
     <string name="phone_number_012">012 234 456</string>
@@ -107,4 +105,7 @@
     <string name="football">Football</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="more">More</string>
 </resources>
