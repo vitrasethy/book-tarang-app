@@ -7,7 +7,7 @@ data class ApiResponse<T>(
 ) {
 
     fun isSuccess(): Boolean {
-        return status == "success"
+        return status == "successful"
     }
 
 }

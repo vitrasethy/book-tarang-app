@@ -8,15 +8,19 @@ import androidx.fragment.app.Fragment
 import com.example.booktarang.R
 import com.example.booktarang.databinding.ActivityLandingBinding
 import com.example.booktarang.fragments.HomeFragment
+import com.example.booktarang.fragments.LoginFragment
 import com.example.booktarang.fragments.ProfileFragment
 
 class LandingActivity: AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
 
     private val homeFragment = HomeFragment()
+    private val loginFragment = LoginFragment()
     private val profileFragment = ProfileFragment()
 
     private lateinit var activityFragment: Fragment
+
+    private var isLoggedIn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +32,7 @@ class LandingActivity: AppCompatActivity() {
 
         activityFragment = homeFragment
         fragmentTransaction.add(binding.lytFragment.id, homeFragment)
-        fragmentTransaction.add(binding.lytFragment.id, profileFragment).hide(profileFragment)
+        fragmentTransaction.add(binding.lytFragment.id, loginFragment).hide(loginFragment)
 
         fragmentTransaction.commit()
 
@@ -37,10 +41,17 @@ class LandingActivity: AppCompatActivity() {
         }
     }
 
+    fun showProfileFragment(token: String) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.remove(loginFragment)
+        fragmentTransaction.add(binding.lytFragment.id, profileFragment)
+        fragmentTransaction.commit()
+    }
+
     private fun handleOnNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mnuHome -> showFragment(homeFragment)
-            else -> showFragment(profileFragment)
+            else -> showFragment(loginFragment)
         }
 
         return true
