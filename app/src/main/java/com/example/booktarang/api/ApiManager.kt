@@ -9,7 +9,7 @@ object ApiManager {
     fun getApiService(): ApiService {
         if(apiService == null) {
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://localhost:8000/api/")
+                .baseUrl("http://10.0.2.2:8000/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             apiService = retrofit.create(ApiService::class.java)
