@@ -6,13 +6,44 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/lytError"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="UselessParent">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name" />
+            android:text="Failed to load profile" />
+
     </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lytContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22sp"
+            tools:text="John Doe" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+
 </FrameLayout>

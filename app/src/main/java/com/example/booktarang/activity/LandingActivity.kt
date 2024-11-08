@@ -11,6 +11,7 @@ import com.example.booktarang.fragments.FieldFragment
 import com.example.booktarang.fragments.HomeFragment
 import com.example.booktarang.fragments.LoginFragment
 import com.example.booktarang.fragments.ProfileFragment
+import com.example.booktarang.model.User
 
 class LandingActivity: AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
@@ -44,7 +45,8 @@ class LandingActivity: AppCompatActivity() {
         }
     }
 
-    fun showProfileFragment(token: String) {
+    fun showProfileFragment(profile: User) {
+        profileFragment.profile = profile
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.remove(loginFragment)
         fragmentTransaction.add(binding.lytFragment.id, profileFragment)

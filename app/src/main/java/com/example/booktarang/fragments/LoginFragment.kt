@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.booktarang.activity.LandingActivity
 import com.example.booktarang.databinding.FragmentLoginBinding
 import com.example.booktarang.model.State
+import com.example.booktarang.model.User
 import com.example.booktarang.viewmodel.LoginViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
@@ -45,11 +46,10 @@ class LoginFragment: Fragment() {
                         State.loading -> showLoading()
                         State.success -> {
                             hideLoading()
-                            showProfile(it.data!!.token)
+                            showProfile(it.data!!.user)
                         }
                         State.error -> {
                             hideLoading()
-
                         }
                         else -> {}
                     }
@@ -82,10 +82,10 @@ class LoginFragment: Fragment() {
         binding.pgrLoading.isVisible = false;
     }
 
-    private fun showProfile(token: String) {
+    private fun showProfile(profile: User) {
         if (activity is LandingActivity) {
             val landingActivity = activity as LandingActivity
-            landingActivity.showProfileFragment(token)
+            landingActivity.showProfileFragment(profile)
         }
     }
 }
