@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.booktarang.R
 import com.example.booktarang.databinding.ActivityLandingBinding
+import com.example.booktarang.fragments.FieldFragment
 import com.example.booktarang.fragments.HomeFragment
 import com.example.booktarang.fragments.LoginFragment
 import com.example.booktarang.fragments.ProfileFragment
@@ -17,6 +18,7 @@ class LandingActivity: AppCompatActivity() {
     private val homeFragment = HomeFragment()
     private val loginFragment = LoginFragment()
     private val profileFragment = ProfileFragment()
+    private val fieldFragment = FieldFragment()
 
     private lateinit var activityFragment: Fragment
 
@@ -33,6 +35,7 @@ class LandingActivity: AppCompatActivity() {
         activityFragment = homeFragment
         fragmentTransaction.add(binding.lytFragment.id, homeFragment)
         fragmentTransaction.add(binding.lytFragment.id, loginFragment).hide(loginFragment)
+        fragmentTransaction.add(binding.lytFragment.id, fieldFragment).hide(fieldFragment)
 
         fragmentTransaction.commit()
 
@@ -52,6 +55,11 @@ class LandingActivity: AppCompatActivity() {
         when (item.itemId) {
             R.id.mnuHome -> showFragment(homeFragment)
             else -> showFragment(loginFragment)
+        }
+
+        when (item.itemId) {
+            R.id.mnuMore -> showFragment(fieldFragment)
+            else -> showFragment(homeFragment)
         }
 
         return true
