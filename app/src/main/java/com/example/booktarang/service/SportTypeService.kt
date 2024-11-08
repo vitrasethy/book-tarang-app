@@ -7,5 +7,4 @@ import retrofit2.http.GET
 interface SportTypeService {
     @GET("/api/sport-type")
     suspend fun loadDataDisplay(): ApiResponse<List<Data>>
-
 }

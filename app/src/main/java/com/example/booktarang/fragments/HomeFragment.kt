@@ -41,6 +41,8 @@ class HomeFragment: Fragment() {
             when(dataState.state){
                 State.success -> SportTypeAdapter.submitList(dataState.data)
                 State.error -> Toast.makeText(context, "Error loading data. Please try again.", Toast.LENGTH_SHORT).show()
+                State.none -> TODO()
+                State.loading -> TODO()
             }
         }
         viewModel.loadData()

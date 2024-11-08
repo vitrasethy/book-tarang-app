@@ -54,14 +54,9 @@ class LandingActivity: AppCompatActivity() {
     private fun handleOnNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.mnuHome -> showFragment(homeFragment)
-            else -> showFragment(loginFragment)
+            R.id.mnuAccount -> showFragment(loginFragment)
+            else -> showFragment(fieldFragment)
         }
-
-        when (item.itemId) {
-            R.id.mnuMore -> showFragment(fieldFragment)
-            else -> showFragment(homeFragment)
-        }
-
         return true
     }
 
