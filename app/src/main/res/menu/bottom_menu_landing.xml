@@ -8,10 +8,10 @@
 <!--        android:id="@+id/mnuProvinces"-->
 <!--        android:icon="@drawable/ic_provinces"-->
 <!--        android:title="@string/provinces" />-->
-<!--    <item-->
-<!--        android:id="@+id/mnuSearch"-->
-<!--        android:icon="@drawable/ic_search"-->
-<!--        android:title="@string/search" />-->
+    <item
+        android:id="@+id/mnuFootball"
+        android:icon="@drawable/ic_football"
+        android:title="@string/fields" />
     <item
         android:id="@+id/mnuAccount"
         android:checked="true"

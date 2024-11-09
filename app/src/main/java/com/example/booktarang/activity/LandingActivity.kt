@@ -10,6 +10,7 @@ import com.example.booktarang.databinding.ActivityLandingBinding
 import com.example.booktarang.fragments.FieldFragment
 import com.example.booktarang.fragments.HomeFragment
 import com.example.booktarang.fragments.LoginFragment
+import com.example.booktarang.fragments.MoreFragment
 import com.example.booktarang.fragments.ProfileFragment
 import com.example.booktarang.model.User
 
@@ -20,6 +21,7 @@ class LandingActivity: AppCompatActivity() {
     private val loginFragment = LoginFragment()
     private val profileFragment = ProfileFragment()
     private val fieldFragment = FieldFragment()
+    private val moreFragment = MoreFragment()
 
     private lateinit var activityFragment: Fragment
 
@@ -37,6 +39,7 @@ class LandingActivity: AppCompatActivity() {
         fragmentTransaction.add(binding.lytFragment.id, homeFragment)
         fragmentTransaction.add(binding.lytFragment.id, loginFragment).hide(loginFragment)
         fragmentTransaction.add(binding.lytFragment.id, fieldFragment).hide(fieldFragment)
+        fragmentTransaction.add(binding.lytFragment.id, moreFragment).hide(moreFragment)
 
         fragmentTransaction.commit()
 
@@ -57,7 +60,8 @@ class LandingActivity: AppCompatActivity() {
         when (item.itemId) {
             R.id.mnuHome -> showFragment(homeFragment)
             R.id.mnuAccount -> showFragment(loginFragment)
-            else -> showFragment(fieldFragment)
+            R.id.mnuFootball -> showFragment(fieldFragment)
+            else -> showFragment(moreFragment)
         }
         return true
     }

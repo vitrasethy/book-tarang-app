@@ -11,16 +11,15 @@ import com.example.booktarang.model.Field
 import kotlinx.coroutines.launch
 
 class FieldViewModel : ViewModel() {
-    private val _fieldState = MutableLiveData<ApiState<Field>>()
-    val fieldState: LiveData<ApiState<Field>> get() = _fieldState
+    private val _fieldState = MutableLiveData<ApiState<List<Field>>>()
+    val fieldState: LiveData<ApiState<List<Field>>> get() = _fieldState
 
-    fun loadField() {
+    fun loadFields() {
         val apiService = ApiManager.getApiService()
-
         _fieldState.postValue(ApiState(State.loading, null))
         viewModelScope.launch {
             try {
-                val fieldResponse = apiService.loadField()
+                val fieldResponse = apiService.loadFields()
                 if (fieldResponse.isSuccess()) {
                     _fieldState.postValue(ApiState(State.success, fieldResponse.data))
                 } else {

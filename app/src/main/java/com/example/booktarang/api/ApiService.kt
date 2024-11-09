@@ -17,6 +17,6 @@ interface ApiService {
     @GET("user")
     suspend fun loadProfile(): ApiResponse<User>
 
-    @GET("fields/1")
-    suspend fun loadField(): ApiResponse<RealField>
+    @GET("fields")
+    suspend fun loadFields(): ApiResponse<List<RealField>>
 }
