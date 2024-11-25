@@ -4,20 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booktarang.adapter.SportTypeAdapter
 import com.example.booktarang.databinding.FragmentHomeBinding
-import com.example.booktarang.databinding.FragmentProfileBinding
+import com.example.booktarang.model.ApiState
+import com.example.booktarang.model.Data
 import com.example.booktarang.model.State
 import com.example.booktarang.viewmodel.HomeViewModel
 
-class HomeFragment: Fragment() {
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var SportTypeAdapter: SportTypeAdapter
+class HomeFragment: BaseFragment() {
     private val viewModel by viewModels<HomeViewModel>()
+
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,23 +30,37 @@ class HomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        SportTypeAdapter = SportTypeAdapter()
 
-        binding.recycleviewsport.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = SportTypeAdapter
-        }
-
-        viewModel.dateState.observe(viewLifecycleOwner){ dataState ->
-            when(dataState.state){
-                State.success -> SportTypeAdapter.submitList(dataState.data)
-                State.error -> Toast.makeText(context, "Error loading data. Please try again.", Toast.LENGTH_SHORT).show()
-                State.none -> TODO()
-                State.loading -> TODO()
-            }
+        viewModel.homeState.observe(viewLifecycleOwner){ state ->
+            handleState(state)
         }
         viewModel.loadData()
     }
 
+    private fun handleState(state: ApiState<List<Data>>) {
+        when(state.state) {
+            State.loading -> showLoading()
+            State.success -> {
+                hideLoading()
+                showSportTypes(state.data!!)
+            }
+            State.error -> {
+                hideLoading()
+            }
+            else -> {}
+        }
+    }
 
+    private fun showSportTypes(sportTypes: List<Data>) {
+        val spanCount = 2
+
+        val sportTypeLayoutManager = GridLayoutManager(requireContext(), spanCount)
+        val sportTypeAdapter = SportTypeAdapter()
+        sportTypeAdapter.setData(sportTypes)
+
+        binding.recycleviewsport.apply {
+            adapter = sportTypeAdapter
+            layoutManager = sportTypeLayoutManager
+        }
+    }
 }

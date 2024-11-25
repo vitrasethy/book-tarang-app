@@ -2,39 +2,38 @@ package com.example.booktarang.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.booktarang.databinding.ViewHolderSporttypeBinding
 import com.example.booktarang.model.Data
 
-class SportTypeAdapter: ListAdapter<Data, SportTypeAdapter.SportTypeViewHolder>(SportTypeDiffCallback()) {
-    class SportTypeViewHolder(private var binding: ViewHolderSporttypeBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Data){
-            binding.sportName.text = data.name
-        }
+class SportTypeAdapter: RecyclerView.Adapter<SportTypeViewHolder>() {
 
+    private var data = emptyList<Data>()
+
+    fun setData(data: List<Data>) {
+        this.data = data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SportTypeViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ViewHolderSporttypeBinding.inflate(inflater, parent, false)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ViewHolderSporttypeBinding.inflate(layoutInflater, parent, false)
+
         return SportTypeViewHolder(binding)
     }
 
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
     override fun onBindViewHolder(holder: SportTypeViewHolder, position: Int) {
-        val Data = getItem(position)
-        holder.bind(Data)
+        val sportType = data[position]
+        holder.bind(sportType)
     }
 }
 
-class SportTypeDiffCallback: DiffUtil.ItemCallback<Data>() {
-    override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
-        return oldItem == newItem
+class SportTypeViewHolder(private val binding: ViewHolderSporttypeBinding): ViewHolder(binding.root) {
+    fun bind(sportType: Data) {
+        binding.sportName.text = sportType.name
     }
-
-    override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
-        return oldItem.id == newItem.id
-    }
-
 }

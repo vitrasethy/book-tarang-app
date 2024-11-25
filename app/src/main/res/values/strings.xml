@@ -110,4 +110,5 @@
     <string name="account">Account</string>
     <string name="fields">Fields</string>
     <string name="more">More</string>
+    <string name="please_sign_in">Please Sign In to View Account</string>
 </resources>
