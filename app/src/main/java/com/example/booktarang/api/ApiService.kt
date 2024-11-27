@@ -1,6 +1,7 @@
 package com.example.booktarang.api
 
 import com.example.booktarang.model.ApiResponse
+import com.example.booktarang.model.Data
 import com.example.booktarang.model.LoginResponse
 import com.example.booktarang.model.User
 import com.example.booktarang.model.Field as RealField
@@ -19,4 +20,7 @@ interface ApiService {
 
     @GET("fields")
     suspend fun loadFields(): ApiResponse<List<RealField>>
+
+    @GET("sport-type")
+    suspend fun loadDataDisplay(): ApiResponse<List<Data>>
 }

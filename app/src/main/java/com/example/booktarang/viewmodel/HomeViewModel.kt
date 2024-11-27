@@ -1,32 +1,35 @@
 package com.example.booktarang.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.booktarang.model.ApiResponse
+import com.example.booktarang.api.ApiClient
 import com.example.booktarang.model.ApiState
 import com.example.booktarang.model.Data
-import com.example.booktarang.model.State
-import com.example.booktarang.service.ApiManager
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel: ViewModel() {
-    private val _dataState = MutableLiveData<ApiState<List<Data>>>()
-    val dateState: LiveData<ApiState<List<Data>>> get() = _dataState
+    private val _homeState = MutableLiveData<ApiState<List<Data>>>()
+    val homeState get() = _homeState
     fun loadData() {
-        val dataService = ApiManager.getDataService()
+        var apiState = ApiState.loading<List<Data>>()
+        _homeState.postValue(apiState)
         viewModelScope.launch {
             try {
-                val dataResponse = dataService.loadDataDisplay()
-                if(dataResponse.status == "successful"){
-                    _dataState.postValue(ApiState(State.success, dataResponse.data))
+                val dataResponse = ApiClient.get().apiService.loadDataDisplay()
+                if(dataResponse.isSuccess()){
+                    apiState = ApiState.success(dataResponse.data)
                 }else{
-                    _dataState.postValue(ApiState(State.error, null))
+                    apiState = ApiState.error(dataResponse.message)
                 }
             }catch (ex: Exception){
-                Log.e("ruppite", "Error While loading data: $ex")
+                apiState = ApiState.error(ex.message)
+            }
+
+            withContext(Dispatchers.Main) {
+                _homeState.postValue(apiState)
             }
         }
     }

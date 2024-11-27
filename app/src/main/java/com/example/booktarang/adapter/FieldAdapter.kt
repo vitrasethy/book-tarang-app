@@ -2,37 +2,37 @@ package com.example.booktarang.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.booktarang.databinding.ViewHolderFieldBinding
 import com.example.booktarang.model.Field
 
-class FieldAdapter: ListAdapter<Field, FieldAdapter.FieldViewHolder>(FieldTypeDiffCallback()) {
-    class FieldViewHolder(private var binding: ViewHolderFieldBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Field) {
-            binding.fieldName.text = data.name
-        }
+class FieldAdapter: Adapter<FieldViewHolder>() {
+    private var data = emptyList<Field>()
+
+    fun setData(data: List<Field>) {
+        this.data = data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FieldViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ViewHolderFieldBinding.inflate(inflater, parent, false)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ViewHolderFieldBinding.inflate(layoutInflater, parent, false)
+
         return FieldViewHolder(binding)
     }
 
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
     override fun onBindViewHolder(holder: FieldViewHolder, position: Int) {
-        val data = getItem(position)
-        holder.bind(data)
+        val field = data[position]
+        holder.bind(field)
     }
 }
 
-class FieldTypeDiffCallback: DiffUtil.ItemCallback<Field>() {
-    override fun areItemsTheSame(oldItem: Field, newItem: Field): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Field, newItem: Field): Boolean {
-        return oldItem.id == newItem.id
+class FieldViewHolder(private val binding: ViewHolderFieldBinding): ViewHolder(binding.root){
+    fun bind(field: Field) {
+        binding.fieldName.text = field.name
     }
 }

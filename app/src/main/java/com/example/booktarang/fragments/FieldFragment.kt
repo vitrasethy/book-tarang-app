@@ -9,14 +9,15 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.booktarang.adapter.FieldAdapter
 import com.example.booktarang.databinding.FragmentFieldBinding
+import com.example.booktarang.model.ApiState
+import com.example.booktarang.model.Field
 import com.example.booktarang.model.State
 import com.example.booktarang.viewmodel.FieldViewModel
 
-class FieldFragment : Fragment() {
+class FieldFragment : BaseFragment() {
     private val viewModel by viewModels<FieldViewModel>()
 
     private lateinit var binding: FragmentFieldBinding
-    private lateinit var FieldAdapter: FieldAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,39 +30,40 @@ class FieldFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FieldAdapter = FieldAdapter()
-
-        binding.recycleviewfield.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = FieldAdapter
-        }
 
         viewModel.fieldState.observe(viewLifecycleOwner) { fieldState ->
-            when (fieldState.state) {
-                State.loading -> showLoading()
-                State.success -> {
-                    hideLoading()
-                    FieldAdapter.submitList(fieldState.data)
-                }
-                State.error -> {
-                    hideLoading()
-                    showErrorContent()
-                }
-                else -> {}
-            }
+            handleState(fieldState)
         }
 
         viewModel.loadFields()
     }
 
-    private fun showLoading() {
-        binding.lytContent.visibility = View.GONE
-        binding.progressBar.visibility = View.VISIBLE
+    private fun handleState(state: ApiState<List<Field>>) {
+        when (state.state) {
+            State.loading -> showLoading()
+            State.success -> {
+                hideLoading()
+                showFields(state.data!!)
+            }
+            State.error -> {
+                hideLoading()
+                showErrorContent()
+            }
+            else -> {}
+        }
     }
 
-    private fun hideLoading() {
-        binding.progressBar.visibility = View.GONE
-        binding.lytContent.visibility = View.VISIBLE
+    private fun showFields(fields: List<Field>) {
+        val spanCount = 2
+
+        val fieldLayoutManager = GridLayoutManager(requireContext(), spanCount)
+        val fieldAdapter = FieldAdapter()
+        fieldAdapter.setData(fields);
+
+        binding.recycleviewfield.apply {
+            adapter = fieldAdapter
+            layoutManager = fieldLayoutManager
+        }
     }
 
     private fun showErrorContent() {
