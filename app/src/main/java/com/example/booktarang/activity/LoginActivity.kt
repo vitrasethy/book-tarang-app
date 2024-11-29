@@ -23,6 +23,7 @@ class LoginActivity: BaseActivity() {
         setUpListener()
     }
 
+
     private fun setUpUi() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -32,6 +33,8 @@ class LoginActivity: BaseActivity() {
         binding.btnLogin.setOnClickListener{
             onLoginButtonClick()
         }
+        binding.btnBack.setOnClickListener{
+            onBackButtonClick()
         binding.btnGoToRegister.setOnClickListener {
             onGoToRegisterButtonClick()
         }
@@ -69,6 +72,8 @@ class LoginActivity: BaseActivity() {
         viewModel.login(email, password)
     }
 
+    private fun onBackButtonClick() {
+        finish()
     private fun onGoToRegisterButtonClick() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)

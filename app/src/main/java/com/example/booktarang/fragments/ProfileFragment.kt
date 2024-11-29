@@ -47,7 +47,6 @@ class ProfileFragment: BaseFragment() {
         viewModel.profileState.observe(viewLifecycleOwner) {state ->
             handleState(state)
         }
-        viewModel.loadProfile()
         setUpUi()
         setUpListener()
     }
@@ -80,6 +79,9 @@ class ProfileFragment: BaseFragment() {
         binding.btnLogin.setOnClickListener{
             onLoginButton()
         }
+        binding.btnLogOut.setOnClickListener{
+            onLogOutButton()
+        }
     }
 
     private fun onLoginButton() {
@@ -87,11 +89,18 @@ class ProfileFragment: BaseFragment() {
         loginLauncher.launch(intent)
     }
 
+    private fun onLogOutButton() {
+        AppEncryptPref.get().deleteToken(requireContext())
+        showLoginButton()
+    }
+
     private fun showProfile(user: User) {
         binding.lytLogin.isVisible = false
         binding.lytContent.isVisible = true
 
         binding.txtName.text = user.name
+        binding.txtNameMain.text = user.name
+        binding.txtEmail.text = user.email
     }
 
     private fun showLoginButton() {
