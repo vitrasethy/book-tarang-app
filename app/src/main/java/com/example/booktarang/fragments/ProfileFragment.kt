@@ -61,6 +61,7 @@ class ProfileFragment: BaseFragment() {
             State.error -> {
                 hideLoading()
                 showAlert("Test", state.message!!)
+                showLoginButton()
             }
             else -> {}
         }
