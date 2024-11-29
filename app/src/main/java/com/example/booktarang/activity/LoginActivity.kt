@@ -1,5 +1,6 @@
 package com.example.booktarang.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.booktarang.databinding.ActivityLoginBinding
@@ -34,6 +35,8 @@ class LoginActivity: BaseActivity() {
         }
         binding.btnBack.setOnClickListener{
             onBackButtonClick()
+        binding.btnGoToRegister.setOnClickListener {
+            onGoToRegisterButtonClick()
         }
     }
 
@@ -71,6 +74,9 @@ class LoginActivity: BaseActivity() {
 
     private fun onBackButtonClick() {
         finish()
+    private fun onGoToRegisterButtonClick() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
 }

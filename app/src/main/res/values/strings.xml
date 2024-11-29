@@ -112,4 +112,9 @@
     <string name="fields">Fields</string>
     <string name="more">More</string>
     <string name="please_sign_in">Please Sign In to View Account</string>
+    <string name="tarang_logo">Tarang Logo</string>
+    <string name="input_name_placeholder">Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="no_account_click_this_button">No account? Click this button</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
