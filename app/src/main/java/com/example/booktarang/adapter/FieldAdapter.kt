@@ -34,5 +34,7 @@ class FieldAdapter: Adapter<FieldViewHolder>() {
 class FieldViewHolder(private val binding: ViewHolderFieldBinding): ViewHolder(binding.root){
     fun bind(field: Field) {
         binding.fieldName.text = field.name
+        binding.fieldOpenTime.text = field.openTime
+        binding.fieldCloseTime.text = field.closeTime
     }
 }

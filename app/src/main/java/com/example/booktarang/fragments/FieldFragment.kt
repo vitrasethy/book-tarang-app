@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booktarang.adapter.FieldAdapter
 import com.example.booktarang.databinding.FragmentFieldBinding
 import com.example.booktarang.model.ApiState
@@ -54,11 +53,9 @@ class FieldFragment : BaseFragment() {
     }
 
     private fun showFields(fields: List<Field>) {
-        val spanCount = 2
-
-        val fieldLayoutManager = GridLayoutManager(requireContext(), spanCount)
+        val fieldLayoutManager = LinearLayoutManager(requireContext())
         val fieldAdapter = FieldAdapter()
-        fieldAdapter.setData(fields);
+        fieldAdapter.setData(fields)
 
         binding.recycleviewfield.apply {
             adapter = fieldAdapter
