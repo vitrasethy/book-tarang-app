@@ -43,8 +43,8 @@ class RegisterActivity : BaseActivity() {
         when (state.state) {
             State.loading -> showLoading()
             State.success -> {
-                AppEncryptPref.get().storeToken(this, state.data!!.token)
-                setResult(RESULT_OK)
+//                AppEncryptPref.get().storeToken(this, state.data!!.token)
+//                setResult(RESULT_OK)
                 finish()
             }
 

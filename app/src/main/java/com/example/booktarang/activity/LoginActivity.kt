@@ -30,53 +30,57 @@ class LoginActivity: BaseActivity() {
     }
 
     private fun setUpListener() {
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             onLoginButtonClick()
         }
-        binding.btnBack.setOnClickListener{
+        binding.btnBack.setOnClickListener {
             onBackButtonClick()
+        }
         binding.btnGoToRegister.setOnClickListener {
             onGoToRegisterButtonClick()
         }
     }
 
-    private fun setUpObserver() {
-        viewModel.loginState.observe(this) {
-            handleState(it)
-        }
-    }
-
-    private fun handleState(state: ApiState<LoginResponse>) {
-        when(state.state) {
-            State.loading -> showLoading()
-            State.success -> {
-                AppEncryptPref.get().storeToken(this, state.data!!.token)
-                setResult(RESULT_OK)
-                finish()
+        private fun setUpObserver() {
+            viewModel.loginState.observe(this) {
+                handleState(it)
             }
-            State.error -> {
-                hideLoading()
-                showAlert("Error", state.message ?: "Unexpected Error")
+        }
+
+        private fun handleState(state: ApiState<LoginResponse>) {
+            when (state.state) {
+                State.loading -> showLoading()
+                State.success -> {
+                    AppEncryptPref.get().storeToken(this, state.data!!.token)
+                    setResult(RESULT_OK)
+                    finish()
+                }
+
+                State.error -> {
+                    hideLoading()
+                    showAlert("Error", state.message ?: "Unexpected Error")
+                }
+
+                else -> {}
             }
-            else -> {}
         }
-    }
 
-    private fun onLoginButtonClick() {
-        val email = binding.editTextEmail.text.toString().trim()
-        val password = binding.editTextPassword.text.toString().trim()
-        if(email.isEmpty() || password.isEmpty()) {
-            showAlert("Invalid Input", "Please enter username and password")
-            return
+        private fun onLoginButtonClick() {
+            val email = binding.editTextEmail.text.toString().trim()
+            val password = binding.editTextPassword.text.toString().trim()
+            if (email.isEmpty() || password.isEmpty()) {
+                showAlert("Invalid Input", "Please enter username and password")
+                return
+            }
+            viewModel.login(email, password)
         }
-        viewModel.login(email, password)
-    }
 
-    private fun onBackButtonClick() {
-        finish()
-    private fun onGoToRegisterButtonClick() {
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
+        private fun onBackButtonClick() {
+            finish()
+        }
 
+        private fun onGoToRegisterButtonClick() {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 }
