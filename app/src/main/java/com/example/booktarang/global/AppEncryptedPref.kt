@@ -15,6 +15,10 @@ class AppEncryptPref private constructor(){
         return getPref(context).getString(KEY_TOKEN, null);
     }
 
+    fun deleteToken(context: Context) {
+        getPref(context).edit().remove(KEY_TOKEN).apply();
+    }
+
     private fun getPref(context: Context): SharedPreferences {
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         return EncryptedSharedPreferences.create(

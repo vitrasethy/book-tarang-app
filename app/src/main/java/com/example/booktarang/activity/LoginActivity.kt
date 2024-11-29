@@ -22,6 +22,7 @@ class LoginActivity: BaseActivity() {
         setUpListener()
     }
 
+
     private fun setUpUi() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -30,6 +31,9 @@ class LoginActivity: BaseActivity() {
     private fun setUpListener() {
         binding.btnLogin.setOnClickListener{
             onLoginButtonClick()
+        }
+        binding.btnBack.setOnClickListener{
+            onBackButtonClick()
         }
     }
 
@@ -63,6 +67,10 @@ class LoginActivity: BaseActivity() {
             return
         }
         viewModel.login(email, password)
+    }
+
+    private fun onBackButtonClick() {
+        finish()
     }
 
 }
