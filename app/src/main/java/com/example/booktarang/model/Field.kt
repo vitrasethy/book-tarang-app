@@ -1,29 +1,17 @@
-package com.example.booktarang.model;
+package com.example.booktarang.model
 
-public class Field {
-    private Integer id;
-    private String name;
-    private Data sport_type;
-    private String open_time;
-    private String close_time;
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-//    public String getType() {
-//        return sport_type.getName();
-//    }
-
-    public String getOpenTime() {
-        return open_time;
-    }
-
-    public String getCloseTime() {
-        return close_time;
-    }
+@Parcelize
+data class Field(
+    private val id: Int,
+    private val name: String,
+    private val open_time: String,
+    private val close_time: String
+) : Parcelable {
+    fun getId(): Int = id
+    fun getName(): String = name
+    fun getOpenTime(): String = open_time
+    fun getCloseTime(): String = close_time
 }
