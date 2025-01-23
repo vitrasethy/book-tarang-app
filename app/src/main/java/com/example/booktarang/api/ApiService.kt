@@ -1,6 +1,7 @@
 package com.example.booktarang.api
 
 import com.example.booktarang.model.ApiResponse
+import com.example.booktarang.model.BookingData
 import com.example.booktarang.model.BookingResponse
 import com.example.booktarang.model.Data
 import com.example.booktarang.model.LoginResponse
@@ -34,6 +35,9 @@ interface ApiService {
 
     @GET("sport-type")
     suspend fun loadDataDisplay(): ApiResponse<List<Data>>
+
+    @GET("bookings")
+    suspend fun loadBookings(): ApiResponse<List<BookingData>>
 
     @FormUrlEncoded
     @POST("bookings")
