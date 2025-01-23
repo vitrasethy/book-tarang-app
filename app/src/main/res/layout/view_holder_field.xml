@@ -86,11 +86,11 @@
                     android:text="CloseTime" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/submitBooking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Book Now" />
+<!--            <Button-->
+<!--                android:id="@+id/submitBooking"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Book Now" />-->
         </LinearLayout>
 
     </RelativeLayout>

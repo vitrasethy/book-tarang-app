@@ -56,6 +56,7 @@
 
     <string name="hello">Hello,</string>
     <string name="sodara">Sodora</string>
+    <string name="guest">Guest</string>
     <string name="volleyball">Volleyball</string>
     <string name="pingpong">Ping Pong</string>
     <string name="basketball">Basketball</string>
@@ -74,7 +75,6 @@
     <string name="slash">&#8211;</string>
     <string name="warning">Please arrive 30 min early</string>
 
-    <string name="booking">Booking</string>
     <string name="upcoming">Upcoming</string>
     <string name="completed">Completed</string>
 
@@ -111,6 +111,7 @@
     <string name="account">Account</string>
     <string name="fields">Fields</string>
     <string name="more">More</string>
+    <string name="booking">Booking</string>
     <string name="please_sign_in">Please Sign In to View Account</string>
     <string name="tarang_logo">Tarang Logo</string>
     <string name="input_name_placeholder">Name</string>

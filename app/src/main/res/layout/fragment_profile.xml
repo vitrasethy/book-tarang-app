@@ -1,162 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        app:title="@string/account"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <LinearLayout
-        android:id="@+id/lytError"
+        android:layout_below="@+id/appToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Failed to load profile" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lytContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:visibility="gone"
-        >
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/profile"
-            android:layout_gravity="center"
-            android:clipToOutline="true"
-            />
-
+        android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/lytError"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/txtNameMain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fullname"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
 
-            <ImageButton
-                android:id="@+id/btnLogOut"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_logout"
-                />
+                android:text="Failed to load profile" />
+
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lytContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:paddingVertical="16dp"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profile"
+                android:layout_gravity="center"
+                android:clipToOutline="true"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/input_shape"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="32dp"
-                android:padding="16dp"
-                >
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ic_user"/>
+                android:layout_marginTop="16dp"
+                android:gravity="center">
                 <TextView
-                    android:id="@+id/txtName"
+                    android:id="@+id/txtNameMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fullname"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:paddingStart="12dp"/>
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnLogOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_logout"
+                    android:background="@null"
+                    android:padding="8dp"
+                    />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/input_shape"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="18dp"
-                android:padding="16dp"
-                >
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ic_email"/>
-                <TextView
-                    android:id="@+id/txtEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number_012"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:paddingStart="12dp"/>
-            </LinearLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/input_shape"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="18dp"
-                android:padding="16dp"
-                >
+                android:orientation="vertical">
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input_shape"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:padding="16dp"
+                    >
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/ic_lock"/>
+                        android:src="@drawable/ic_user"/>
                     <TextView
+                        android:id="@+id/txtName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/password"
+                        android:text="@string/fullname"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:paddingStart="12dp"/>
                 </LinearLayout>
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input_shape"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="18dp"
+                    android:padding="16dp"
+                    >
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_email"/>
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone_number_012"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:paddingStart="12dp"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input_shape"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="18dp"
+                    android:padding="16dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_lock"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/password"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:paddingStart="12dp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lytLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/lytLogin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/please_sign_in"
+                android:layout_marginBottom="16dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/please_sign_in"
-            android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signin"
-            />
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signin"
+                />
+        </LinearLayout>
     </LinearLayout>
 
     <ProgressBar
@@ -166,4 +182,4 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
-</FrameLayout>
+</RelativeLayout>

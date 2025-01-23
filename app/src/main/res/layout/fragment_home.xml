@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,12 +37,22 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/guest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sodara"
+                    android:text="@string/guest"
                     android:textColor="@color/black"
                     android:textSize="40sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="visible"/>
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <ImageView
@@ -51,7 +61,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="24dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/logo"
                 android:clipToOutline="true"
                 android:contentDescription="User Profile Image" />
         </RelativeLayout>
@@ -75,4 +85,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

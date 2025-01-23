@@ -32,8 +32,6 @@ class MoreFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupUi()
-        setupListener()
         setupObserver()
         viewModel.loadBookingData()
     }
@@ -46,6 +44,7 @@ class MoreFragment: Fragment() {
 
     private fun handleState(state: ApiState<List<BookingData>>) {
         when (state.state) {
+//            State.loading -> showLoading()
             State.success -> { showBookingList(state.data!!) }
             State.error -> {}
             else -> {}
@@ -53,15 +52,12 @@ class MoreFragment: Fragment() {
     }
 
     private fun showBookingList(bookingList: List<BookingData>) {
-        binding.recycleviewbooking.layoutManager = LinearLayoutManager(requireContext())
-        binding.recycleviewbooking.adapter = BookingAdapter(bookingList)
+        val bookingAdapter = BookingAdapter();
+        bookingAdapter.setData(bookingList)
+
+        binding.recycleviewbooking.apply {
+            adapter = bookingAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
-
-    private fun setupListener() {
-    }
-
-    private fun setupUi() {
-    }
-
-
 }
