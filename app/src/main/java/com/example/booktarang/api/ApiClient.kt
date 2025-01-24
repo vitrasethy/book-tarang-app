@@ -1,5 +1,6 @@
 package com.example.booktarang.api
 
+import com.example.booktarang.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +18,8 @@ class ApiClient private constructor(){
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:8000/api/")
+        .baseUrl(BuildConfig.API_BASE_URL)
+//        .baseUrl("http://10.0.2.2:8000/api/")
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
