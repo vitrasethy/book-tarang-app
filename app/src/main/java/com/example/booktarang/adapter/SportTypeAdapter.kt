@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.booktarang.R
 import com.example.booktarang.databinding.ViewHolderSporttypeBinding
 import com.example.booktarang.model.Data
 
-class SportTypeAdapter: RecyclerView.Adapter<SportTypeViewHolder>() {
+class SportTypeAdapter(private val onItemClick: (Data) -> Unit): RecyclerView.Adapter<SportTypeViewHolder>() {
 
     private var data = emptyList<Data>()
 
@@ -19,7 +20,7 @@ class SportTypeAdapter: RecyclerView.Adapter<SportTypeViewHolder>() {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewHolderSporttypeBinding.inflate(layoutInflater, parent, false)
 
-        return SportTypeViewHolder(binding)
+        return SportTypeViewHolder(binding, onItemClick)
     }
 
     override fun getItemCount(): Int {
@@ -32,8 +33,30 @@ class SportTypeAdapter: RecyclerView.Adapter<SportTypeViewHolder>() {
     }
 }
 
-class SportTypeViewHolder(private val binding: ViewHolderSporttypeBinding): ViewHolder(binding.root) {
+class SportTypeViewHolder(
+    private val binding: ViewHolderSporttypeBinding,
+    private val onItemClick: (Data) -> Unit
+): RecyclerView.ViewHolder(binding.root) {
     fun bind(sportType: Data) {
         binding.sportName.text = sportType.name
+
+        val iconResId = when (sportType.id) {
+            1 -> R.drawable.ic_football
+            2 -> R.drawable.ic_basketball
+            3 -> R.drawable.ic_volleyball
+            4 -> R.drawable.ic_baseball
+            else -> R.drawable.ic_baseball
+        }
+        binding.sportIcon.setImageResource(iconResId)
+
+        binding.root.setOnClickListener { onItemClick(sportType) }
     }
 }
+
+//class SportTypeViewHolder(private val binding: ViewHolderSporttypeBinding,
+//                          private val onItemClick: (Data) -> Unit): ViewHolder(binding.root) {
+//    fun bind(sportType: Data) {
+//        binding.sportName.text = sportType.name
+//        binding.root.setOnClickListener { onItemClick(sportType) }
+//    }
+//}

@@ -19,8 +19,18 @@ class LoginActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setUpUi()
+
+        setSupportActionBar(binding.appToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         setUpObserver()
         setUpListener()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 
 
@@ -32,9 +42,6 @@ class LoginActivity: BaseActivity() {
     private fun setUpListener() {
         binding.btnLogin.setOnClickListener {
             onLoginButtonClick()
-        }
-        binding.btnBack.setOnClickListener {
-            onBackButtonClick()
         }
         binding.btnGoToRegister.setOnClickListener {
             onGoToRegisterButtonClick()
@@ -73,10 +80,6 @@ class LoginActivity: BaseActivity() {
                 return
             }
             viewModel.login(email, password)
-        }
-
-        private fun onBackButtonClick() {
-            finish()
         }
 
         private fun onGoToRegisterButtonClick() {

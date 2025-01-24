@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
     android:elevation="4dp"
@@ -18,39 +18,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/logo"/>
+                android:src="@drawable/logo" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp"
                 android:layout_gravity="center"
-                >
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/fieldName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textAppearance="?attr/textAppearanceSubtitle1"
-                    android:textColor="@android:color/black" />
+<!--                <TextView-->
+<!--                    android:id="@+id/fieldName"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Name"-->
+<!--                    android:textAppearance="?attr/textAppearanceSubtitle1"-->
+<!--                    android:textColor="@android:color/black" />-->
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Type:"
+                        android:text="Field:"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
                         android:textColor="@android:color/black" />
+
                     <TextView
-                        android:id="@+id/fieldType"
+                        android:id="@+id/fieldFieldId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Type"
+                        android:text="Field Id"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
                         android:textColor="@android:color/black" />
 
@@ -63,34 +67,47 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:gravity="center_horizontal">
+            android:gravity="start"
+            android:orientation="vertical">
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Date: "/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/fieldDate"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="23 Jan 2025" />-->
+<!--            </LinearLayout>-->
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:id="@+id/fieldOpenTime"
+                    android:id="@+id/fieldStartDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OpenTime" />
+                    android:text="Start Date" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" - " />
+
                 <TextView
-                    android:id="@+id/fieldCloseTime"
+                    android:id="@+id/fieldEndDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CloseTime" />
+                    android:text="End Date" />
             </LinearLayout>
-
-<!--            <Button-->
-<!--                android:id="@+id/submitBooking"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Book Now" />-->
         </LinearLayout>
 
     </RelativeLayout>

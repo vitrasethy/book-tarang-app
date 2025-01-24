@@ -1,97 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <!-- ImageButton at top-left corner -->
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_arrow_back"
-        android:contentDescription="test" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <!-- Logo ImageView -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/logo"
-        android:layout_below="@id/btnBack"
-        android:layout_marginTop="50dp" />
-
-    <!-- Welcome TextView -->
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/welcome_to"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="16dp" />
-
-    <!-- Tarang TextView -->
-    <TextView
-        android:id="@+id/tarang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/tarang"
-        android:textColor="#9575CD"
-        android:textSize="54sp"
-        android:layout_below="@id/welcome"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold" />
-
-    <!-- Email EditText -->
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:text="@string/email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_below="@id/tarang"
-        android:layout_marginTop="24dp"
-        android:inputType="textEmailAddress" />
+        android:orientation="vertical"
+        android:layout_below="@id/appToolbar"
+        android:paddingHorizontal="24dp" android:gravity="center">
+        <!-- Logo ImageView -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/logo" />
 
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:text="@string/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_below="@id/editTextEmail"
-        android:layout_marginTop="16dp"
-        android:inputType="textPassword" />
+        <!-- Welcome TextView -->
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <!-- Sign In Button -->
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/signin"
-        android:layout_below="@id/editTextPassword"
-        android:layout_marginTop="24dp" />
+        <!-- Tarang TextView -->
+        <TextView
+            android:id="@+id/tarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tarang"
+            android:textColor="#9575CD"
+            android:textSize="54sp"
+            android:textStyle="bold" />
 
-       <Button
-        android:id="@+id/btnGoToRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_account_click_this_button"
-        android:layout_below="@id/btnLogin"
-        android:layout_marginTop="24dp"/>
+        <!-- Email EditText -->
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/input_shape"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:hint="@string/email" />
+
+        <!-- Password EditText -->
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/input_shape"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:hint="@string/password" />
+
+        <!-- Sign In Button -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/signin" />
+
+        <!-- Go to Register Button -->
+        <Button
+            android:id="@+id/btnGoToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/no_account_click_this_button" />
+    </LinearLayout>
 </RelativeLayout>

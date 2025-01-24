@@ -18,8 +18,18 @@ class RegisterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setUpUi()
+
+        setSupportActionBar(binding.appToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         setUpObserver()
         setUpListener()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 
     private fun setUpUi() {
@@ -43,8 +53,8 @@ class RegisterActivity : BaseActivity() {
         when (state.state) {
             State.loading -> showLoading()
             State.success -> {
-//                AppEncryptPref.get().storeToken(this, state.data!!.token)
-//                setResult(RESULT_OK)
+                AppEncryptPref.get().storeToken(this, state.data!!.token)
+                setResult(RESULT_OK)
                 finish()
             }
 

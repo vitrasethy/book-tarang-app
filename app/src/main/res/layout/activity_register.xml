@@ -1,88 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="141dp"
-        android:layout_gravity="center"
-        android:contentDescription="@string/tarang_logo"
-        app:srcCompat="@drawable/logo" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/appToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/welcome_to"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tarang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/tarang"
-        android:textColor="#9575CD"
-        android:textSize="54sp"
-        android:layout_marginBottom="16dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:autofillHints="emailAddress"
-        android:text="@string/input_name_placeholder"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_marginBottom="24dp"
-        android:inputType="textCapWords" />
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_below="@+id/appToolbar">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="141dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/tarang_logo"
+            app:srcCompat="@drawable/logo" />
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:autofillHints="emailAddress"
-        android:text="@string/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_marginBottom="24dp"
-        android:inputType="textEmailAddress" />
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/welcome_to"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:text="@string/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_marginBottom="24dp"
-        android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/tarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/tarang"
+            android:textColor="#9575CD"
+            android:textSize="54sp"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextConfirmPassword"
-        android:text="@string/confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:padding="12dp"
-        android:layout_marginBottom="24dp"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:autofillHints="emailAddress"
+            android:text="@string/input_name_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:background="@drawable/input_shape"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textCapWords" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up" />
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:autofillHints="emailAddress"
+            android:text="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:background="@drawable/input_shape"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textEmailAddress" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:text="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editTextConfirmPassword"
+            android:text="@string/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up" />
+    </LinearLayout>
+
+</RelativeLayout>
