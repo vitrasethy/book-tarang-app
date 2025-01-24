@@ -1,5 +1,6 @@
 package com.example.booktarang.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.booktarang.model.ApiState
@@ -54,7 +55,11 @@ class RegisterActivity : BaseActivity() {
             State.loading -> showLoading()
             State.success -> {
                 AppEncryptPref.get().storeToken(this, state.data!!.token)
-                setResult(RESULT_OK)
+//                setResult(RESULT_OK)
+//                finish()
+                val intent = packageManager.getLaunchIntentForPackage(packageName)
+                intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
                 finish()
             }
 
