@@ -23,17 +23,13 @@ jobs:
       - name: Install Java 17
         run: sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
 
-      # Set JAVA_HOME for Java 17
-      - name: Set JAVA_HOME
-        run: |
-          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
-          echo "/usr/lib/jvm/java-17-openjdk-amd64/bin" >> $GITHUB_PATH
+      # Set JAVA_HOME
+      - name: Set JAVA_HOME to Java 17
+        run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
 
-      # Verify Java version
+      # Verify Java Version
       - name: Verify Java Version
-        run: |
-          java -version
-          echo $JAVA_HOME
+        run: java -version
 
       # Checkout code
       - name: Checkout code
@@ -45,17 +41,13 @@ jobs:
           KEYSTORE_BASE_64: ${{ secrets.KEYSTORE_BASE_64 }}
         run: echo "$KEYSTORE_BASE_64" | base64 -d > app/BookTarang.jks
 
-      # Configure Gradle properties (ensure Java 17 is used)
-      - name: Configure Gradle Properties
-        run: echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> gradle.properties
-
       # Make Gradle scripts executable
       - name: Make Gradle scripts executable
         run: |
           chmod +x ./gradlew
           chmod +x ./build.sh
 
-      # Clean and build APK
+      # Build APK
       - name: Build APK
         run: ./gradlew clean build
 
