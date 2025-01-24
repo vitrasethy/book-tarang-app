@@ -20,15 +20,20 @@ jobs:
 
     steps:
       # Install Java 17
-      - name: Set up Java 17
-        uses: actions/checkout@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      - name: Install Java 17
+        run: sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
+
+      # Set JAVA_HOME for Java 17
+      - name: Set JAVA_HOME
+        run: |
+          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
+          echo "/usr/lib/jvm/java-17-openjdk-amd64/bin" >> $GITHUB_PATH
 
       # Verify Java version
-      - name: Verify Java version
-        run: java -version
+      - name: Verify Java Version
+        run: |
+          java -version
+          echo $JAVA_HOME
 
       # Checkout code
       - name: Checkout code
@@ -38,7 +43,11 @@ jobs:
       - name: Decode and save keystore
         env:
           KEYSTORE_BASE_64: ${{ secrets.KEYSTORE_BASE_64 }}
-        run: echo "$KEYSTORE_BASE_64"| base64 -d > app/BookTarang.jks
+        run: echo "$KEYSTORE_BASE_64" | base64 -d > app/BookTarang.jks
+
+      # Configure Gradle properties (ensure Java 17 is used)
+      - name: Configure Gradle Properties
+        run: echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> gradle.properties
 
       # Make Gradle scripts executable
       - name: Make Gradle scripts executable
@@ -46,13 +55,13 @@ jobs:
           chmod +x ./gradlew
           chmod +x ./build.sh
 
-      # Build APK
+      # Clean and build APK
       - name: Build APK
-        run: ./build.sh
+        run: ./gradlew clean build
 
       # Upload artifact
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: book-tarang.apk
-          path: book-tarang.apk
+          path: app/build/outputs/apk/**/*.apk
