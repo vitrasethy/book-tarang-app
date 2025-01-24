@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/leapkh/andriod-ci:1.0.2
+      image: ghcr.io/leapkh/android-ci:1.0.2
 
     env:
       ANDROID_HOME: /sdk
@@ -17,7 +17,6 @@ jobs:
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 
     steps:
       # Checkout code
@@ -28,8 +27,8 @@ jobs:
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       # Verify Java Version
       - name: Verify Java Version
@@ -56,4 +55,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: book-tarang.apk
-          path: app/build/outputs/apk/**/*.apk
+          path: book-tarang.apk
