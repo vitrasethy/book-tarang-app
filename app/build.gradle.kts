@@ -48,7 +48,7 @@ android {
             resValue("string", "app_name", "Book Tarang Test")
             buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:8000/api/\"")
         }
-        create("prod") {
+        create("prd") {
             dimension = "BookTarang"
             applicationId = "com.example.booktarang"
             resValue("string", "app_name", "Book Tarang")
