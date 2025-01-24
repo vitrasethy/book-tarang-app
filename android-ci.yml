@@ -33,13 +33,13 @@ jobs:
       - name: Decode and save keystore
         env:
           KEYSTORE_BASE_64: ${{ secrets.KEYSTORE_BASE_64 }}
-        run: echo "$KEYSTORE_BASE_64"| base64 -d > app/keystore.jks
+        run: echo "$KEYSTORE_BASE_64"| base64 -d > app/BookTarang.jks
 
       # Make Gradle scripts executable
       - name: Make Gradle scripts executable
         run: |
           chmod +x ./gradlew
-          chmod +- ./build.sh
+          chmod +x ./build.sh
 
       # Build APK
       - name: Build APK
