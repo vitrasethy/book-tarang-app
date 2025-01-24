@@ -31,6 +31,10 @@ jobs:
       - name: Verify Java Version
         run: java -version
 
+      # Set JAVA_HOME environment variable for the build
+      - name: Set JAVA_HOME environment variable
+        run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
       # Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
