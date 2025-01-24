@@ -1,0 +1,46 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    image: ghcr.io/leapkh/andriod-ci:1.0.2
+
+    env:
+      ANDROID_HOME: /sdk
+      GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Decode keystore and set permissions
+      - name: Decode and save keystore
+        env:
+          KEYSTORE_BASE_64: ${{ secrets.KEYSTORE_BASE_64 }}
+        run: echo "$KEYSTORE_BASE_64"| base64 -d > app/keystore.jks
+
+      # Make Gradle scripts executable
+      - name: Make Gradle scripts executable
+        run: | 
+          chmod +x ./gradlew
+          chmod +- ./build.sh
+
+      # Build APK
+      - name: Build APK
+        run: ./build.sh
+
+      # Upload artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: book-tarang.apk
+          path: book-tarang.apk
