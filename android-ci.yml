@@ -17,27 +17,20 @@ jobs:
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 
     steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       # Install Java 17
       - name: Install Java 17
         run: sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
 
-      # Set JAVA_HOME
-      - name: Set JAVA_HOME to Java 17
-        run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
-
       # Verify Java Version
       - name: Verify Java Version
         run: java -version
-
-      # Set JAVA_HOME environment variable for the build
-      - name: Set JAVA_HOME environment variable
-        run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-
-      # Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       # Decode keystore and set permissions
       - name: Decode and save keystore
