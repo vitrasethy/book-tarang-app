@@ -38,6 +38,10 @@ android {
         }
     }
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     flavorDimensions += "BookTarang"
     productFlavors {
         create("dev") {

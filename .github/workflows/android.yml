@@ -46,6 +46,10 @@ jobs:
           chmod +x ./gradlew
           chmod +x ./build.sh
 
+      # Create lint baseline
+      - name: Create lint baseline
+        run: ./gradlew updateLintBaseline
+
       # Build APK
       - name: Build APK
         run: ./gradlew clean build
