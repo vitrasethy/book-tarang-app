@@ -30,7 +30,7 @@ jobs:
 
       # Make Gradle scripts executable
       - name: Make Gradle scripts executable
-        run: | 
+        run: |
           chmod +x ./gradlew
           chmod +- ./build.sh
 
