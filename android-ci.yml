@@ -20,12 +20,15 @@ jobs:
 
     steps:
       # Install Java 17
-      - name: Install Java 17
-        run: sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
+      - name: Set up Java 17
+        uses: actions/checkout@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-      # Set JAVA_HOME
-      - name: Set JAVA_HOME to Java 17
-        run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
+      # Verify Java version
+      - name: Verify Java version
+        run: java -version
 
       # Checkout code
       - name: Checkout code
