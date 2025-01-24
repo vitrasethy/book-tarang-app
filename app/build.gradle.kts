@@ -24,10 +24,6 @@ android {
             storePassword = System.getenv("KEYSTORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEYSTORE_PASSWORD")
-//            storeFile = file("d:/School/MAD/BookTarang.jks")
-//            storePassword = "password"
-//            keyAlias = "BookTarang"
-//            keyPassword = "password"
         }
     }
 
@@ -38,9 +34,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
-    flavorDimensionList += "BookTarang"
+
+    flavorDimensions += "BookTarang"
     productFlavors {
         create("dev") {
             dimension = "BookTarang"
@@ -54,17 +52,20 @@ android {
             resValue("string", "app_name", "Book Tarang")
             buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:8000/api/\"")
         }
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
-        }
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
-        buildFeatures {
-            viewBinding = true
-            buildConfig = true
-        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
     }
 
     dependencies {
