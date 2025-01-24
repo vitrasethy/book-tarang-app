@@ -66,15 +66,36 @@
                 android:drawablePadding="8dp"
                 android:layout_marginBottom="8dp"/>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtFieldContact"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/venue_contact"-->
-<!--                android:textSize="16sp"-->
-<!--                android:drawableStart="@drawable/ic_phone"-->
-<!--                android:drawablePadding="8dp"-->
-<!--                android:layout_marginBottom="16dp"/>-->
+            <!-- Added DateTime Input Fields -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Start Date and Time"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/startDateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="End Date and Time"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/endDateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBookVenue"
@@ -84,26 +105,4 @@
                 android:layout_marginTop="16dp"/>
         </LinearLayout>
     </ScrollView>
-
-<!--    <LinearLayout-->
-<!--        android:layout_below="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:padding="16dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtFieldName"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/fullname"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="22sp"-->
-<!--            />-->
-
-<!--    </LinearLayout>-->
-
-
-
 </RelativeLayout>
