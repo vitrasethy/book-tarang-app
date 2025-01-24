@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booktarang.databinding.ViewHolderBookingBinding
 import com.example.booktarang.model.BookingData
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class BookingAdapter: RecyclerView.Adapter<BookingViewHolder>() {
 
@@ -34,7 +36,10 @@ class BookingAdapter: RecyclerView.Adapter<BookingViewHolder>() {
 class BookingViewHolder(private val binding: ViewHolderBookingBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(bookingData: BookingData) {
+        binding.fieldFieldId.text = bookingData.field.name
+        binding.fieldType.text = bookingData.field.sportType.name
         binding.fieldStartDate.text = bookingData.start_date
         binding.fieldEndDate.text = bookingData.end_date
     }
+
 }

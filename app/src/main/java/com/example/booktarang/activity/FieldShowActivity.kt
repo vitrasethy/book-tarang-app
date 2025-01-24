@@ -1,5 +1,6 @@
 package com.example.booktarang.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -115,7 +116,16 @@ class FieldShowActivity: BaseActivity() {
             State.success -> {
                 hideLoading()
                 binding.btnBookVenue.isEnabled = true
+                setResult(RESULT_OK)
                 Toast.makeText(this, "Booking successful!", Toast.LENGTH_SHORT).show()
+//                finish()
+//                val intent = packageManager.getLaunchIntentForPackage(packageName)
+//                intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                startActivity(intent)
+                val intent = Intent(this, LandingActivity::class.java).apply {
+                    putExtra("FRAGMENT_TO_LOAD", "booking")
+                }
+                startActivity(intent)
                 finish()
             }
             State.error -> {

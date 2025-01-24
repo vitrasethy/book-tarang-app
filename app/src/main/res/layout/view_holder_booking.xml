@@ -41,22 +41,85 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content" android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Field: "
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/fieldFieldId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Field Id"
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Type: "
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/fieldType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Type"
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Field:"
-                        android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="@android:color/black" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/fieldFieldId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Field Id"
-                        android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="@android:color/black" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Start: "
+                                android:textAppearance="?attr/textAppearanceSubtitle2"
+                                android:textColor="@android:color/black" />
+                            <TextView
+                                android:id="@+id/fieldStartDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Start Date" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="End: "
+                                android:textAppearance="?attr/textAppearanceSubtitle2"
+                                android:textColor="@android:color/black" />
+                            <TextView
+                                android:id="@+id/fieldEndDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="End Date" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -87,27 +150,6 @@
 <!--                    android:text="23 Jan 2025" />-->
 <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/fieldStartDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Start Date" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" - " />
-
-                <TextView
-                    android:id="@+id/fieldEndDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="End Date" />
-            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

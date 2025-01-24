@@ -8,10 +8,12 @@ import com.example.booktarang.global.AppEncryptPref
 import com.example.booktarang.model.ApiState
 import com.example.booktarang.model.LoginResponse
 import com.example.booktarang.model.State
+import com.example.booktarang.viewmodel.AuthViewModel
 import com.example.booktarang.viewmodel.LoginViewModel
 
 class LoginActivity: BaseActivity() {
     private val viewModel by viewModels<LoginViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
 
      private lateinit var binding: ActivityLoginBinding
 
@@ -59,7 +61,12 @@ class LoginActivity: BaseActivity() {
                 State.loading -> showLoading()
                 State.success -> {
                     AppEncryptPref.get().storeToken(this, state.data!!.token)
-                    setResult(RESULT_OK)
+                    authViewModel.updateLoginStatus(true)
+//                    setResult(RESULT_OK)
+//                    finish()
+                    val intent = packageManager.getLaunchIntentForPackage(packageName)
+                    intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
                     finish()
                 }
 

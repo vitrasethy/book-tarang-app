@@ -56,7 +56,7 @@
 
     <string name="hello">Hello,</string>
     <string name="sodara">Sodora</string>
-    <string name="guest">Guest</string>
+    <string name="guest">Player</string>
     <string name="volleyball">Volleyball</string>
     <string name="pingpong">Ping Pong</string>
     <string name="basketball">Basketball</string>

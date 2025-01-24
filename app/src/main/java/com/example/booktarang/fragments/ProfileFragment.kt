@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,11 +18,13 @@ import com.example.booktarang.global.AppEncryptPref
 import com.example.booktarang.model.ApiState
 import com.example.booktarang.model.State
 import com.example.booktarang.model.User
+import com.example.booktarang.viewmodel.AuthViewModel
 import com.example.booktarang.viewmodel.ProfileViewModel
 
 class ProfileFragment: BaseFragment() {
     private lateinit var binding: FragmentProfileBinding
     private val viewModel by viewModels<ProfileViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
 
     private val loginLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -92,7 +95,12 @@ class ProfileFragment: BaseFragment() {
 
     private fun onLogOutButton() {
         AppEncryptPref.get().deleteToken(requireContext())
-        showLoginButton()
+        authViewModel.updateLoginStatus(false)
+//        showLoginButton()
+        val intent = requireActivity().packageManager.getLaunchIntentForPackage(requireActivity().packageName)
+        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent!!)
+        requireActivity().finish()
     }
 
     private fun showProfile(user: User) {

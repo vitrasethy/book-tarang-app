@@ -5,23 +5,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booktarang.activity.FieldIndexActivity
+import com.example.booktarang.activity.FieldShowActivity
+import com.example.booktarang.adapter.FieldAdapter
 import com.example.booktarang.adapter.SportTypeAdapter
 import com.example.booktarang.databinding.FragmentHomeBinding
 import com.example.booktarang.global.AppEncryptPref
 import com.example.booktarang.model.ApiState
 import com.example.booktarang.model.Data
+import com.example.booktarang.model.Field
 import com.example.booktarang.model.State
 import com.example.booktarang.model.User
+import com.example.booktarang.viewmodel.FieldIndexViewModel
+import com.example.booktarang.viewmodel.FieldViewModel
 import com.example.booktarang.viewmodel.HomeViewModel
 import com.example.booktarang.viewmodel.ProfileViewModel
 
 class HomeFragment: BaseFragment() {
     private val viewModel by viewModels<HomeViewModel>()
+    private val fieldViewModel by viewModels<FieldViewModel>()
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -41,6 +48,8 @@ class HomeFragment: BaseFragment() {
             handleState(state)
         }
         viewModel.loadData()
+        fieldViewModel.fieldState.observe(viewLifecycleOwner){state -> handleFieldState(state)}
+        fieldViewModel.loadFields()
     }
 
     private fun handleState(state: ApiState<List<Data>>) {
@@ -49,6 +58,20 @@ class HomeFragment: BaseFragment() {
             State.success -> {
                 hideLoading()
                 showSportTypes(state.data!!)
+            }
+            State.error -> {
+                hideLoading()
+            }
+            else -> {}
+        }
+    }
+
+    private fun handleFieldState(state: ApiState<List<Field>>) {
+        when(state.state) {
+            State.loading -> showLoading()
+            State.success -> {
+                hideLoading()
+                showFields(state.data!!)
             }
             State.error -> {
                 hideLoading()
@@ -72,6 +95,21 @@ class HomeFragment: BaseFragment() {
         binding.recycleviewsport.apply {
             adapter = sportTypeAdapter
             layoutManager = sportTypeLayoutManager
+        }
+    }
+
+    private fun showFields(fields: List<Field>) {
+        val fieldAdapter = FieldAdapter{ selectedField ->
+            val intent = Intent(context, FieldShowActivity::class.java).apply {
+                putExtra("FIELD_ID", selectedField.id)
+            }
+            startActivity(intent)
+        }
+        fieldAdapter.setData(fields)
+
+        binding.recycleviewfield.apply {
+            adapter = fieldAdapter
+            layoutManager = LinearLayoutManager(context)
         }
     }
 }

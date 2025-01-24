@@ -41,6 +41,18 @@ class LandingActivity: BaseActivity() {
         fragmentTransaction.add(binding.lytFragment.id, moreFragment).hide(moreFragment)
 
         fragmentTransaction.commit()
+
+        when (intent.getStringExtra("FRAGMENT_TO_LOAD")) {
+            "booking" -> navigateToBookingFragment()
+        }
+    }
+
+    private fun navigateToBookingFragment() {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.hide(activityFragment)
+        fragmentTransaction.show(moreFragment)
+        fragmentTransaction.commit()
+        activityFragment = moreFragment
     }
 
     private fun setUpBottomNavigation() {
